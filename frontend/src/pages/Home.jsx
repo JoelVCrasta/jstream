@@ -20,7 +20,7 @@ const Home = () => {
         )
         console.log(response.data.data)
 
-        if (response.status === 404) {
+        if (response.status === 404 || response.data.data.length === 0) {
           setLoading(false)
           setFound(false)
           return
