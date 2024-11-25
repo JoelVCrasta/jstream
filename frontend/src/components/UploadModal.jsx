@@ -92,8 +92,8 @@ const UploadModal = ({ closeUploadModal }) => {
 
       setIsUploading(false)
       clearForm()
-
-      ccess(response.data.message)
+      closeUploadModal()
+      toast.success("Video uploaded successfully")
     } catch (error) {
       setIsUploading(false)
       console.error(error)

@@ -67,11 +67,12 @@ router.post(
         category,
         videoLength: formattedDuration,
         views: 0,
+        comments: [],
         videoUrl,
         thumbnailUrl,
       }
-      const mongoResponse = await client.streams.create({ data })
-      if (!mongoResponse) {
+      const video = await client.streams.create({ data })
+      if (!video) {
         return res.status(500).json({ message: "Failed to upload video" })
       }
 
