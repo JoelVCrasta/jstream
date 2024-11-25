@@ -36,4 +36,38 @@ router.get("/watch/:id", async (req, res) => {
   }
 })
 
+router.post("/watch/comment/:id", async (req, res) => {
+  const id = req.params.id
+  const { comment } = req.body
+  console.log("POST /watch/comment/:id", id)
+
+  try {
+    const checkVideo = await client.streams.findUnique({
+      where: {
+        id: id,
+      },
+    })
+
+    if (!checkVideo) {
+      return res.status(404).json({ message: "Video not found" })
+    }
+
+    await client.streams.update({
+      where: {
+        id: id,
+      },
+      data: {
+        comments: {
+          push: comment,
+        },
+      },
+    })
+
+    return res.status(200).json({ message: "Comment added" })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: "Internal server error" })
+  }
+})
+
 export default router
