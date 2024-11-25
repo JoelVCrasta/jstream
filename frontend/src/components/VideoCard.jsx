@@ -25,7 +25,7 @@ const VideoCard = ({ video }) => {
         </div>
 
         <div className="p-2">
-          <p className="pr-2 text-lg font-semibold line-clamp-2">
+          <p className="pr-2 text-lg font-semibold text-ellipsis line-clamp-1">
             {video.title}
           </p>
 
