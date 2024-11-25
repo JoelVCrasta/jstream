@@ -12,7 +12,7 @@ const SearchBar = () => {
           />
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Search"
             className="w-full h-full bg-transparent outline-none pl-4 pr-12 text-xl"
           />
         </div>
